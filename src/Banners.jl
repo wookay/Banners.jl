@@ -4,7 +4,11 @@ export banner
 
 include("versions.jl")
 
-function banner(io::IO, version=VERSION, have_color::Bool=2 != Base.JLOptions().color; commit_date="", commit_string="")
+function banner(version::VersionNumber, args...; kwargs...)
+    banner(stdout, version, args...; kwargs...)
+end
+
+function banner(io::IO, version::VersionNumber=VERSION, have_color::Bool=2 != Base.JLOptions().color; commit_date="", commit_string="")
     if     v"0.2" > version
         banner_01(io, version, have_color; commit_string=commit_string)
     elseif v"0.3" > version >= v"0.2"

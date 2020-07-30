@@ -1,7 +1,7 @@
 ```julia
 julia> using Banners
 
-julia> banner(stdout, v"0.1")
+julia> banner(v"0.1")
                _
    _       _ _(_)_     |  A fresh approach to technical computing
   (_)     | (_) (_)    |  Documentation: http://docs.julialang.org
@@ -12,7 +12,7 @@ julia> banner(stdout, v"0.1")
 |__/                   |
 
 
-julia> banner(stdout, v"1.0")
+julia> banner(v"1.0")
                _
    _       _ _(_)_     |  Documentation: https://docs.julialang.org
   (_)     | (_) (_)    |
