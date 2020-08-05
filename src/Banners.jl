@@ -2,13 +2,20 @@ module Banners
 
 export banner
 
-include("versions.jl")
-
-function banner(version::VersionNumber, args...; kwargs...)
-    banner(stdout, version, args...; kwargs...)
+struct Banner
+    func
+    version::VersionNumber
+    have_color::Bool
+    kwargs
 end
 
-function banner(io::IO, version::VersionNumber=VERSION, have_color::Bool=2 != Base.JLOptions().color; kwargs...)
+include("versions.jl")
+
+function Base.show(io::IO, mime::MIME"text/plain", b::Banner)
+    b.func(io, b.version, b.have_color; b.kwargs...)
+end
+
+function banner(version::VersionNumber=VERSION, have_color::Bool=2 != Base.JLOptions().color; kwargs...)
     if     v"0.2" > version
         f = banner_01
     elseif v"0.3" > version >= v"0.2"
@@ -24,7 +31,7 @@ function banner(io::IO, version::VersionNumber=VERSION, have_color::Bool=2 != Ba
     else
         f = banner_100
     end
-    f(io, version, have_color; kwargs...)
+    Banner(f, version, have_color, kwargs)
 end
 
 end # module Banners
