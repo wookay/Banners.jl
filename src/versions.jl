@@ -33,9 +33,9 @@ $(jl)|__/$(tx)                   |
 
 \033[0m"
     print(io, have_color ? banner_color : banner_plain) 
-end # function banner_01(io, ver::VersionNumber, have_color::Bool; commit_string="")
+end # function banner_01
 
-function banner_020(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+function banner_020(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
 banner_plain =
 """
                _
@@ -45,7 +45,7 @@ banner_plain =
   | | | | | | |/ _` |  |
   | | |_| | | | (_| |  |  Version $(ver)$(commit_date)
  _/ |\\__'_|_|_|\\__'_|  |  $(commit_string)
-|__/                   |  $(Sys.MACHINE)
+|__/                   |  $(MACHINE)
 
 """
 local tx = "\033[0m\033[1m" # text
@@ -62,13 +62,13 @@ banner_color =
   $(jl)| | | | | | |/ _` |$(tx)  |
   $(jl)| | |_| | | | (_| |$(tx)  |  Version $(ver)$(commit_date)
  $(jl)_/ |\\__'_|_|_|\\__'_|$(tx)  |  $(commit_string)
-$(jl)|__/$(tx)                   |  $(Sys.MACHINE)
+$(jl)|__/$(tx)                   |  $(MACHINE)
 
 \033[0m"
     print(io, have_color ? banner_color : banner_plain) 
-end # function banner_020(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+end # function banner_020
 
-function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
     if have_color
         tx = "\033[0m\033[1m" # text
         jl = "\033[0m\033[1m" # julia
@@ -84,7 +84,7 @@ function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           $(jl)| | | | | | |/ _` |$(tx)  |
           $(jl)| | |_| | | | (_| |$(tx)  |  Version $(ver)$(commit_date)
          $(jl)_/ |\\__'_|_|_|\\__'_|$(tx)  |  $(commit_string)
-        $(jl)|__/$(tx)                   |  $(Sys.MACHINE)
+        $(jl)|__/$(tx)                   |  $(MACHINE)
 
         \033[0m""")
     else
@@ -96,14 +96,14 @@ function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           | | | | | | |/ _` |  |
           | | |_| | | | (_| |  |  Version $(ver)$(commit_date)
          _/ |\\__'_|_|_|\\__'_|  |  $(commit_string)
-        |__/                   |  $(Sys.MACHINE)
+        |__/                   |  $(MACHINE)
 
         """)
     end
-end # function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+end # function banner_030
 
 ### 0.4, 0.5
-function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
     if have_color
         tx = "\033[0m\033[1m" # text
         jl = "\033[0m\033[1m" # julia
@@ -119,7 +119,7 @@ function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           $(jl)| | | | | | |/ _` |$(tx)  |
           $(jl)| | |_| | | | (_| |$(tx)  |  Version $(ver)$(commit_date)
          $(jl)_/ |\\__'_|_|_|\\__'_|$(tx)  |  $(commit_string)
-        $(jl)|__/$(tx)                   |  $(Sys.MACHINE)
+        $(jl)|__/$(tx)                   |  $(MACHINE)
 
         \033[0m""")
     else
@@ -131,13 +131,13 @@ function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           | | | | | | |/ _` |  |
           | | |_| | | | (_| |  |  Version $(ver)$(commit_date)
          _/ |\\__'_|_|_|\\__'_|  |  $(commit_string)
-        |__/                   |  $(Sys.MACHINE)
+        |__/                   |  $(MACHINE)
 
         """)
     end
-end # function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+end # function banner_040
 
-function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
     text_colors = Base.text_colors
     if have_color
         c = text_colors
@@ -155,7 +155,7 @@ function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           $(jl)| | | | | | |/ _` |$(tx)  |
           $(jl)| | |_| | | | (_| |$(tx)  |  Version $(ver)$(commit_date)
          $(jl)_/ |\\__'_|_|_|\\__'_|$(tx)  |  $(commit_string)
-        $(jl)|__/$(tx)                   |  $(Sys.MACHINE)
+        $(jl)|__/$(tx)                   |  $(MACHINE)
 
         """)
     else
@@ -167,13 +167,13 @@ function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           | | | | | | |/ _` |  |
           | | |_| | | | (_| |  |  Version $(ver)$(commit_date)
          _/ |\\__'_|_|_|\\__'_|  |  $(commit_string)
-        |__/                   |  $(Sys.MACHINE)
+        |__/                   |  $(MACHINE)
 
         """)
     end
-end # function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+end # function banner_060
 
-function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
     text_colors = Base.text_colors
     if have_color
         c = text_colors
@@ -191,7 +191,7 @@ function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           $(jl)| | | | | | |/ _` |$(tx)  |
           $(jl)| | |_| | | | (_| |$(tx)  |  Version $(ver)$(commit_date)
          $(jl)_/ |\\__'_|_|_|\\__'_|$(tx)  |  $(commit_string)
-        $(jl)|__/$(tx)                   |  $(Sys.MACHINE)
+        $(jl)|__/$(tx)                   |  $(MACHINE)
 
         """)
     else
@@ -203,11 +203,11 @@ function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", co
           | | | | | | |/ _` |  |
           | | |_| | | | (_| |  |  Version $(ver)$(commit_date)
          _/ |\\__'_|_|_|\\__'_|  |  $(commit_string)
-        |__/                   |  $(Sys.MACHINE)
+        |__/                   |  $(MACHINE)
 
         """)
     end
-end # function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+end # function banner_070
 
 ### 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6
 function banner_100(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
@@ -244,6 +244,6 @@ function banner_100(io, ver::VersionNumber, have_color::Bool; commit_date="", co
 
         """)
     end
-end # function banner_100(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
+end # function banner_100
 
 # module Banners

@@ -8,22 +8,23 @@ function banner(version::VersionNumber, args...; kwargs...)
     banner(stdout, version, args...; kwargs...)
 end
 
-function banner(io::IO, version::VersionNumber=VERSION, have_color::Bool=2 != Base.JLOptions().color; commit_date="", commit_string="")
+function banner(io::IO, version::VersionNumber=VERSION, have_color::Bool=2 != Base.JLOptions().color; kwargs...)
     if     v"0.2" > version
-        banner_01(io, version, have_color; commit_string=commit_string)
+        f = banner_01
     elseif v"0.3" > version >= v"0.2"
-        banner_020(io, version, have_color; commit_date=commit_date, commit_string=commit_string)
+        f = banner_020
     elseif v"0.4" > version >= v"0.3"
-        banner_030(io, version, have_color; commit_date=commit_date, commit_string=commit_string)
+        f = banner_030
     elseif v"0.6" > version >= v"0.4"
-        banner_040(io, version, have_color; commit_date=commit_date, commit_string=commit_string)
+        f = banner_040
     elseif v"0.7" > version >= v"0.6"
-        banner_060(io, version, have_color; commit_date=commit_date, commit_string=commit_string)
+        f = banner_060
     elseif v"1.0" > version >= v"0.7"
-        banner_070(io, version, have_color; commit_date=commit_date, commit_string=commit_string)
+        f = banner_070
     else
-        banner_100(io, version, have_color; commit_date=commit_date, commit_string=commit_string)
+        f = banner_100
     end
+    f(io, version, have_color; kwargs...)
 end
 
 end # module Banners
