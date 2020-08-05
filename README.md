@@ -1,3 +1,9 @@
+# Banners.jl
+
+|  **Build Status**                |
+|:---------------------------------|
+|  [![][actions-img]][actions-url] |
+
 ```
 julia> using Banners
 
@@ -79,3 +85,7 @@ julia> banner(v"1.5"; commit_date=" (2020-08-01)", commit_string="Official https
 
 
 ```
+
+
+[actions-img]: https://github.com/wookay/Banners.jl/workflows/CI/badge.svg
+[actions-url]: https://github.com/wookay/Banners.jl/actions
