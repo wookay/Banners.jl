@@ -4,7 +4,7 @@
 |:---------------------------------|
 |  [![][actions-img]][actions-url] |
 
-```
+```julia-repl
 julia> using Banners
 
 julia> banner(v"0.1.2+113667293.r7252"; commit_string="Commit 7252bb59ac (2013-03-30 23:23:59)")
