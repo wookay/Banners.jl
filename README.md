@@ -87,6 +87,16 @@ julia> banner(v"1.5"; commit_date=" (2020-08-01)", commit_string="Official https
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
+julia> banner(v"1.6"; commit_date=" (2021-03-24)", commit_string="Official https://julialang.org/ release")
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.6.0 (2021-03-24)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
 ```
 
 
