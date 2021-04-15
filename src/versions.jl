@@ -1,5 +1,28 @@
 # module Banners
 
+# code from https://github.com/JuliaLang/julia/commit/f1662b024063d80889a29f757deec82868f8da76
+
+function banner_01_pre_release(io, ver::VersionNumber, have_color::Bool; commit_string="")
+    banner_color = "\033[1m               \033[32m_\033[37m      
+   \033[36m_\033[37m       _ \033[31m_\033[32m(_)\033[35m_\033[37m     |
+  \033[36m(_)\033[37m     | \033[31m(_) \033[35m(_)\033[37m    |  pre-release version
+   _ _   _| |_  __ _ 2 |
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  \302\2512009 contributors
+ _/ |\\__'_|_|_|\\__'_|  |  
+|__/                   |\033[0m"
+    banner_plain = "               _      
+   _       _ _(_)_     |
+  (_)     | (_) (_)    |  pre-release version
+   _ _   _| |_  __ _ 2 |
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  \302\2512009 contributors
+ _/ |\\__'_|_|_|\\__'_|  |  
+|__/                   |"
+    print(io, have_color ? banner_color : banner_plain)
+end # function banner_01_pre_release
+
+
 # code from https://github.com/JuliaLang/julia/blob/master/base/version.jl#L270
 
 function banner_01(io, ver::VersionNumber, have_color::Bool; commit_string="")

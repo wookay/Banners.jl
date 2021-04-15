@@ -16,7 +16,9 @@ function Base.show(io::IO, mime::MIME"text/plain", b::Banner)
 end
 
 function banner(version::VersionNumber=VERSION, have_color::Bool=2 != Base.JLOptions().color; kwargs...)
-    if     v"0.2" > version
+    if     v"0.1" > version
+        f = banner_01_pre_release
+    elseif v"0.2" > version
         f = banner_01
     elseif v"0.3" > version >= v"0.2"
         f = banner_020

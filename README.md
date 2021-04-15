@@ -7,6 +7,16 @@
 ```julia-repl
 julia> using Banners
 
+julia> banner(v"0.1-pre-release")
+               _
+   _       _ _(_)_     |
+  (_)     | (_) (_)    |  pre-release version
+   _ _   _| |_  __ _ 2 |
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  ©2009 contributors
+ _/ |\__'_|_|_|\__'_|  |
+|__/                   |
+
 julia> banner(v"0.1.2+113667293.r7252"; commit_string="Commit 7252bb59ac (2013-03-30 23:23:59)")
                _
    _       _ _(_)_     |  A fresh approach to technical computing
