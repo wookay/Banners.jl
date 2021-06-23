@@ -1,7 +1,7 @@
 # module Banners
 
+### pre-release
 # code from https://github.com/JuliaLang/julia/commit/f1662b024063d80889a29f757deec82868f8da76
-
 function banner_01_pre_release(io, ver::VersionNumber, have_color::Bool; commit_string="")
     banner_color = "\033[1m               \033[32m_\033[37m      
    \033[36m_\033[37m       _ \033[31m_\033[32m(_)\033[35m_\033[37m     |
@@ -23,8 +23,8 @@ function banner_01_pre_release(io, ver::VersionNumber, have_color::Bool; commit_
 end # function banner_01_pre_release
 
 
-# code from https://github.com/JuliaLang/julia/blob/master/base/version.jl#L270
-
+# 0.1.2
+# https://github.com/JuliaLang/julia/blob/v0.1.2/base/version.jl#L230
 function banner_01(io, ver::VersionNumber, have_color::Bool; commit_string="")
 version_string = "Version $ver"
 banner_plain =
@@ -36,12 +36,12 @@ banner_plain =
   | | |_| | | | (_| |  |  $version_string
  _/ |\\__'_|_|_|\\__'_|  |  $commit_string
 |__/                   |"
-local tx = "\033[0m\033[1m" # text
-local jl = "\033[0m\033[1m" # julia
-local d1 = "\033[34m" # first dot
-local d2 = "\033[31m" # second dot
-local d3 = "\033[32m" # third dot
-local d4 = "\033[35m" # fourth dot
+tx = "\033[0m\033[1m" # text
+jl = "\033[0m\033[1m" # julia
+d1 = "\033[34m" # first dot
+d2 = "\033[31m" # second dot
+d3 = "\033[32m" # third dot
+d4 = "\033[35m" # fourth dot
 banner_color =
 "\033[1m               $(d3)_
    $(d1)_       $(jl)_$(tx) $(d2)_$(d3)(_)$(d4)_$(tx)     |  A fresh approach to technical computing
@@ -54,7 +54,10 @@ $(jl)|__/$(tx)                   |\033[0m"
     print(io, have_color ? banner_color : banner_plain) 
 end # function banner_01
 
-function banner_020(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
+
+### 0.2.1
+# https://github.com/JuliaLang/julia/blob/v0.2.1/base/version.jl#L208
+function banner_020(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE="")
 banner_plain =
 """
                _
@@ -83,7 +86,10 @@ $(jl)|__/$(tx)                   |  $(MACHINE)\033[0m"
     print(io, have_color ? banner_color : banner_plain) 
 end # function banner_020
 
-function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
+
+### 0.3.12
+# https://github.com/JuliaLang/julia/blob/v0.3.12/base/version.jl#L222
+function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE="")
     if have_color
         tx = "\033[0m\033[1m" # text
         jl = "\033[0m\033[1m" # julia
@@ -113,8 +119,11 @@ function banner_030(io, ver::VersionNumber, have_color::Bool; commit_date="", co
     end
 end # function banner_030
 
-### 0.4, 0.5
-function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
+
+### 0.4.7, 0.5.2
+# https://github.com/JuliaLang/julia/blob/v0.4.7/base/version.jl#L237
+# https://github.com/JuliaLang/julia/blob/v0.5.2/base/version.jl#L247
+function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE="")
     if have_color
         tx = "\033[0m\033[1m" # text
         jl = "\033[0m\033[1m" # julia
@@ -144,7 +153,10 @@ function banner_040(io, ver::VersionNumber, have_color::Bool; commit_date="", co
     end
 end # function banner_040
 
-function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
+
+### 0.6.4
+# https://github.com/JuliaLang/julia/blob/v0.6.4/base/version.jl#L247
+function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE="")
     text_colors = Base.text_colors
     if have_color
         c = text_colors
@@ -176,7 +188,10 @@ function banner_060(io, ver::VersionNumber, have_color::Bool; commit_date="", co
     end
 end # function banner_060
 
-function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE=Sys.MACHINE)
+
+### 0.7.0
+# https://github.com/JuliaLang/julia/blob/v0.7.0/base/version.jl#L283
+function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="", MACHINE="")
     text_colors = Base.text_colors
     if have_color
         c = text_colors
@@ -208,7 +223,14 @@ function banner_070(io, ver::VersionNumber, have_color::Bool; commit_date="", co
     end
 end # function banner_070
 
-### 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6
+### 1.0.5, 1.1.1, 1.2.0, 1.3.1, 1.4.2, 1.5.4, 1.6.1
+# https://github.com/JuliaLang/julia/blob/v1.0.5/base/version.jl#L284
+# https://github.com/JuliaLang/julia/blob/v1.1.1/base/version.jl#L285
+# https://github.com/JuliaLang/julia/blob/v1.2.0/base/version.jl#L285
+# https://github.com/JuliaLang/julia/blob/v1.3.1/base/version.jl#L264
+# https://github.com/JuliaLang/julia/blob/v1.4.2/base/version.jl#L270
+# https://github.com/JuliaLang/julia/blob/v1.5.4/base/version.jl#L270
+# https://github.com/JuliaLang/julia/blob/v1.6.1/base/version.jl#L277
 function banner_100(io, ver::VersionNumber, have_color::Bool; commit_date="", commit_string="")
     text_colors = Base.text_colors
     if have_color
