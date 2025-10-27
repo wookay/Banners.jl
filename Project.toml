@@ -3,6 +3,10 @@ uuid = "a6fc6cd4-3fa5-4fea-8105-59f5ce0140e8"
 authors = ["WooKyoung Noh <wookay.noh@gmail.com>"]
 version = "0.1.0"
 
+[deps]
+REPL = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
+StyledStrings = "f489334b-da3d-4c2e-b8f0-e476e12c162b"
+
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 Jive = "ba5e3d4b-8524-549f-bc71-e76ad9e9deed"
@@ -11,4 +15,4 @@ Jive = "ba5e3d4b-8524-549f-bc71-e76ad9e9deed"
 test = ["Test", "Jive"]
 
 [compat]
-julia = "1"
+julia = "1.11"

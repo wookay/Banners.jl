@@ -3,33 +3,24 @@ module test_banners_versions
 using Test
 using Banners
 
-versions = (v"1.0", v"1.5")
-io = IOBuffer()
-for ver in versions
-    show(io, MIME"text/plain"(), banner(ver, false))
-    println(io)
-    println(io)
+function print_banner(ver::VersionNumber, color::Bool)
+    b = banner(ver, color)
+    iobuf = IOBuffer()
+    ioc = IOContext(iobuf, :color => color)
+    show(ioc, MIME"text/plain"(), b)
+    println(ioc)
+    s = (String ∘ take!)(iobuf)
+    print(s)
 end
-s = (String ∘ take!)(io)
-@test s == raw"""
-               _
-   _       _ _(_)_     |  Documentation: https://docs.julialang.org
-  (_)     | (_) (_)    |
-   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
-  | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.0.0
- _/ |\__'_|_|_|\__'_|  |  
-|__/                   |
 
-               _
-   _       _ _(_)_     |  Documentation: https://docs.julialang.org
-  (_)     | (_) (_)    |
-   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
-  | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.5.0
- _/ |\__'_|_|_|\__'_|  |  
-|__/                   |
+ver = v"1.13.0-DEV.1386"
+print_banner(ver, true)
 
-"""
+versions = (v"1.12",
+            v"0.1-pre-release",
+           )
+for ver in versions
+    print_banner(ver, true)
+end
 
 end # module test_banners_versions
