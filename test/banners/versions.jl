@@ -1,26 +1,28 @@
 module test_banners_versions
 
 using Test
-using Banners
+using Banners # banner
+using .Banners: Banner
 
-function print_banner(ver::VersionNumber, color::Bool)
-    b = banner(ver, color)
+function print_banner(b::Banner)
     iobuf = IOBuffer()
-    ioc = IOContext(iobuf, :color => color)
+    ioc = IOContext(iobuf, :color => b.have_color)
     show(ioc, MIME"text/plain"(), b)
     println(ioc)
     s = (String ∘ take!)(iobuf)
     print(s)
 end
 
-ver = v"1.13.0-DEV.1386"
-print_banner(ver, true)
+ver = v"1.14.0-DEV.14"
+b = banner(ver, true)
+print_banner(b)
 
-versions = (v"1.12",
-            v"0.1-pre-release",
+versions = ((version = v"1.12.1",          kwargs = (; commit_date = " (2025-10-17)", commit_string = "Official https://julialang.org release")),
+            (version = v"0.1-pre-release", kwargs = (; commit_string = "")),
            )
 for ver in versions
-    print_banner(ver, true)
+    b = banner(ver.version, true; ver.kwargs...)
+    print_banner(b)
 end
 
 end # module test_banners_versions

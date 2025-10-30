@@ -30,10 +30,8 @@ function banner(version::VersionNumber=VERSION, have_color::Bool=2 != Base.JLOpt
         f = banner_060
     elseif v"1.0" > version >= v"0.7"
         f = banner_070
-    elseif v"1.13.0-DEV.1386" > version >= v"1.0"
-        f = banner_100
     else
-        f = banner_113
+        f = banner_100
     end
     Banner(f, version, have_color, kwargs)
 end
